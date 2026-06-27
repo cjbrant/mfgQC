@@ -1,0 +1,16 @@
+{
+  "complete": {
+    "label": "complete",
+    "flexsurv_shape_ci": [1.54720308, 2.85589627],
+    "flexsurv_scale_ci": [66.64373885, 100.59552034],
+    "profile_shape": [2.10175324, 1.50414523, 2.79153395],
+    "profile_scale": [81.87044571, 65.69909454, 100.8754092]
+  },
+  "censored": {
+    "label": "censored",
+    "flexsurv_shape_ci": [1.5186751, 3.30320771],
+    "flexsurv_scale_ci": [65.33595091, 98.728526],
+    "profile_shape": [2.23982177, 1.46399696, 3.20804053],
+    "profile_scale": [80.30859433, 65.19076831, 101.9294265]
+  }
+}

@@ -1,0 +1,34 @@
+.env
+/examples
+*.log
+
+# Python build / packaging
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+
+# Virtualenv
+.venv/
+
+# Docs build output (mkdocs) + wrangler deploy state
+site/
+.wrangler/
+
+# Tooling caches
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Rendered notebook output (keep the .ipynb source, not the build artifacts)
+validation*/**/*.html
+validation*/*.html
+
+# macOS
+.DS_Store
+
+# Session review screenshots + tool caches (not part of the project)
+/*.png
+.cache/
+.playwright-mcp/
+docs/guide/result.json

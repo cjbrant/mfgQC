@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mfgqc"
+version = "0.2.1"
+description = "Auditable SPC, capability, and gage R&R for manufacturing: statistical guardrails, hash-chained provenance, canonical QC charts."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Brantner Solutions" }]
+keywords = [
+    "spc", "statistical-process-control", "capability", "cpk", "gage-rr",
+    "msa", "six-sigma", "manufacturing", "control-charts", "doe",
+    "design-of-experiments", "reliability", "acceptance-sampling", "quality-control",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Manufacturing",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "scipy>=1.9",
+    "matplotlib>=3.6",
+    "statsmodels>=0.13",
+    "scikit-learn>=1.1",
+]
+
+[project.urls]
+Homepage = "https://mfgqc.brantnersolutions.com"
+Documentation = "https://mfgqc.brantnersolutions.com"
+Repository = "https://github.com/cjbrant/mfgQC"
+Issues = "https://github.com/cjbrant/mfgQC/issues"
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.25",
+    "mkdocs-material[imaging]>=9.5",
+    "mkdocs-jupyter>=0.24",
+]
+
+[tool.setuptools.packages.find]
+include = ["mfgqc*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
