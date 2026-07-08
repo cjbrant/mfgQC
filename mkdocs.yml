@@ -95,6 +95,7 @@ nav:
       - Choosing a control chart: guide/choosing-a-control-chart.ipynb
       - A gage R&R study: guide/gage-rr.ipynb
       - The audit workflow: guide/audit-workflow.ipynb
+      - Bayesian capability: guide/bayesian-capability.ipynb
   - Reference:
       - reference/index.md
       - Capability: reference/capability.md
@@ -104,6 +105,7 @@ nav:
       - Run rules: reference/run-rules.md
       - Advanced control charts: reference/advanced-charts.md
       - Gage R&R: reference/gage-rr.md
+      - Bayesian analytics: reference/bayesian.md
       - Measurement systems analysis: reference/msa.md
       - Hypothesis testing: reference/hypothesis-testing.md
       - Power & sample size: reference/power.md

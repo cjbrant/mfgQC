@@ -297,7 +297,7 @@ failure rate = 0.0006
 
 The point MTBF is $5000/3 = 1666.67$ hours, and the 90 percent interval runs from 645 to
 6115 hours. The interval is very wide because three failures is little information, which
-is the honest picture at this sample size.
+is the realistic picture at this sample size.
 
 ---
 

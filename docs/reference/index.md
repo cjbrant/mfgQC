@@ -20,6 +20,8 @@ the same property mfgQC gives your analyses.
   variables/attributes chart families.
 - **[Run rules](run-rules.md)**, the Western Electric and Nelson rule sets.
 - **[Gage R&R](gage-rr.md)**, the ANOVA decomposition, the AIAG pooling rule, ndc.
+- **[Bayesian analytics](bayesian.md)**, posterior capability, attributes, comparison,
+  assurance, guardband, monitoring, and the conjugate engines behind them.
 - **[Provenance model](provenance.md)**, the data model, immutability guarantees,
   the digest/hash-chain spec, and exactly what `verify_provenance()` proves.
 - **[API reference](api.md)**, auto-generated from the in-code docstrings.

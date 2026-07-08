@@ -91,7 +91,7 @@ Assumption checks:
   [PASS] normality (Anderson-Darling): AD=0.176, p=0.895; skew 0.249; n=10 [low power]
 ```
 
-The `[low power]` tag is honest about small n: with ten points the normality test has
+The `[low power]` tag flags small n: with ten points the normality test has
 limited resolving power, so a "pass" is weak evidence of normality, not proof of it.
 
 ### `test_means(a, b)`: two independent samples, routed
@@ -311,8 +311,8 @@ The post-hocs shown so far (Tukey, Games-Howell, Dunnett) report a confidence in
 the original measurement scale, as the output above shows. Dunn's test is the exception, and
 it is a different test: it is the post-hoc for the Kruskal-Wallis route, so it compares
 *mean ranks* rather than means. mfgQC leaves its confidence interval as `nan`, because a
-difference in ranks is not on the measurement scale. For Dunn, the Holm-adjusted p-value is
-the number to act on.
+difference in ranks is not on the measurement scale. For Dunn, use the Holm-adjusted
+p-value.
 
 ## 5. Non-parametric location: `test_medians`
 
@@ -465,7 +465,7 @@ conclusion about mechanism.
 
 ## 8. Assumptions, sources, and limits
 
-What mfgQC checks for you, and where the honesty boundaries are:
+What mfgQC checks for you, and where it stops checking:
 
 - **Mean and variance tests** check normality (Anderson-Darling, per group) and equal
   variance (Levene, across groups) and route on the outcomes. `test_means` and

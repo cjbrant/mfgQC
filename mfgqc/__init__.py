@@ -105,6 +105,20 @@ from .reliability import (
     MTBFResult,
     DemonstrationResult,
 )
+from . import bayes
+from .bayes.capability import BayesCapabilityResult
+from .bayes.attributes import BayesProportionResult, BayesRateResult
+from .bayes.censored import BayesCensoredCapabilityResult, Censoring
+from .bayes.comparison import ComparisonResult as BayesComparisonResult
+from .bayes.decisions import AssuranceResult as BayesAssuranceResult
+from .bayes.decisions import GuardbandResult as BayesGuardbandResult
+from .bayes.pooled import PooledCapabilityResult as BayesPooledCapabilityResult
+from .bayes.shortrun import ShortRunResult as BayesShortRunResult
+from .bayes.monitoring import (
+    FrozenReference,
+    MonitorResult,
+    PredictiveCheckResult,
+)
 from .errors import MissingPrerequisiteError, PyQCError
 from .registry import ANALYSES, ANALYSES_BY_NAME, Analysis, list_analyses
 
@@ -219,6 +233,21 @@ __all__ = [
     "AvailabilityResult",
     "MTBFResult",
     "DemonstrationResult",
+    # bayesian
+    "bayes",
+    "BayesCapabilityResult",
+    "BayesProportionResult",
+    "BayesRateResult",
+    "BayesCensoredCapabilityResult",
+    "Censoring",
+    "BayesComparisonResult",
+    "BayesAssuranceResult",
+    "BayesGuardbandResult",
+    "BayesPooledCapabilityResult",
+    "BayesShortRunResult",
+    "FrozenReference",
+    "MonitorResult",
+    "PredictiveCheckResult",
     # errors
     "PyQCError",
     "MissingPrerequisiteError",

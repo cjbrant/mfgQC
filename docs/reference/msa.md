@@ -318,7 +318,7 @@ For the kappa it uses **Cohen's kappa** when there are exactly two appraisers an
 compares each appraiser's consensus against the standard with percent agreement and Cohen's
 kappa.
 
-**Weighted kappa.** Yes, it is implemented. When you pass `ordinal=True`, the kappa
+**Weighted kappa.** When you pass `ordinal=True`, the kappa
 calculations use **linearly weighted** kappa, which gives partial credit for near-misses
 between adjacent ordinal categories instead of scoring every disagreement equally. The
 weighting is wired into `cohen_kappa(..., weights="linear")`; the `cohen_kappa` function

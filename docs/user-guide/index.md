@@ -13,6 +13,9 @@ source standard behind a method, see the [Reference](../reference/index.md) inst
   %study vs %tolerance, ndc, and the AIAG verdict.
 - **[The audit workflow](../guide/audit-workflow.ipynb)**: record, export, and verify a
   result's lineage. This page shows the provenance model end to end.
+- **[Bayesian capability](../guide/bayesian-capability.ipynb)**: make a release decision
+  from a small sample using a posterior probability of conformance, with and without a
+  prior from process history.
 
 ## The one idiom
 

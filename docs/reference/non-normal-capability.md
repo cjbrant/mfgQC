@@ -25,7 +25,7 @@ the normal method, the σ families, and confidence intervals, see
 ## How mfgQC reports non-normality
 
 The default `capability()` (`method="normal"`) **never transforms**. It runs the
-normality check (Anderson–Darling) and, crucially, reports the **estimated effect
+normality check (Anderson–Darling) and reports the **estimated effect
 on the index**: the relative shift in $C_{pk}$ between the normal calculation and an
 auto-fit non-normal distribution (`_cpk_shift` in the code). A failed normality
 test with a large `est. Cpk impact` is your signal to switch methods, but mfgQC
@@ -38,7 +38,7 @@ test with a large `est. Cpk impact` is your signal to switch methods, but mfgQC
     for $C_p$, the approximate-normal interval for $C_{pk}$; see
     [Capability](capability.md)). Those derivations do not hold on transformed or
     percentile-fitted scales, so mfgQC reports **n/a** rather than print an interval
-    it cannot stand behind. If you need uncertainty on a non-normal index, bootstrap
+    whose derivation does not hold on this scale. If you need uncertainty on a non-normal index, bootstrap
     it outside the library.
 
 ## Method selector
@@ -80,8 +80,8 @@ What the code does, step by step:
 2. **Fit $\lambda$.** `scipy.stats.boxcox` chooses the $\lambda$ that maximizes the
    normal log-likelihood of the transformed data.
 3. **Transform the spec limits** with the *same* $\lambda$ and shift via the internal
-   `_bc(...)` function. This is the part that makes the method honest: a spec limit
-   is a point on the measurement scale, so it must travel through the identical
+   `_bc(...)` function. This is the step that keeps the data and the limits on one scale: a
+   spec limit is a point on the measurement scale, so it must travel through the identical
    transform the data did.
 4. **Compute indices on the transformed scale** using the ordinary
    $C_p = (\text{USL}'-\text{LSL}')/6\sigma'$, $C_{pk}=\min(C_{pu},C_{pl})$ formulas,

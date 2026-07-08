@@ -60,6 +60,7 @@ print(qc.capability())      # Cp, Cpk, Pp, Ppk, plus an assumption report
 | Regression and DOE | OLS, model selection, logistic, non-linear least squares; full and fractional factorials |
 | Power and sampling | sample size for t / ANOVA / proportion; ANSI/ASQ Z1.4 and Z1.9 acceptance plans |
 | Reliability | life-distribution fitting with censoring, Kaplan-Meier, system reliability, MTBF, availability |
+| Bayesian analytics | posterior capability, proportion and rate, and comparison; assurance sample size, guardband, Phase-1 monitoring; hierarchical pooling, censored and short-run |
 
 ## Where to start
 

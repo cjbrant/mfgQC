@@ -82,6 +82,29 @@ methods are pinned to these sources, and the test suite checks each one against 
 - **ANSI/ASQ Z1.9.** *Sampling Procedures and Tables for Inspection by Variables for
   Percent Nonconforming.* The variables sampling plans (k-method and M-method).
 
+## Bayesian methods
+
+- **Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B.**
+  *Bayesian Data Analysis,* 3rd ed. (BDA3). CRC Press, 2013.
+  mfgQC's primary Bayesian build oracle: the Normal-Inverse-$\chi^2$ conjugate model and
+  its marginals (§3.3), Beta-Binomial (§2.4) and Gamma-Poisson (§2.6) attribute models,
+  hierarchical Normal pooling (§5.4), censored and truncated likelihoods (§8.7), and
+  posterior-predictive checks (§6.3).
+
+- **Hoff, P. D.** *A First Course in Bayesian Statistical Methods.* Springer, 2009.
+  Conjugate prior elicitation and the reading of $(\kappa_0, \nu_0)$ as an equivalent
+  prior sample size (§5.5); the Gamma-Poisson and two-group worked examples used as
+  correctness oracles.
+
+- **Colosimo, B. M., & del Castillo, E.** (eds.) *Bayesian Process Monitoring, Control and
+  Optimization.* Chapman & Hall/CRC, 2007.
+  The Bayesian process-monitoring and short-run control-chart framing.
+
+- **O'Hagan, A., Stevens, J. W., & Campbell, M. J.** (2005). "Assurance in clinical trial
+  design." *Pharmaceutical Statistics,* 4(3), 187-201.
+  The assurance (Bayesian sample-size) framing adapted for the capability-demonstration
+  calculation.
+
 ## Independent correctness sources
 
 - **NIST/SEMATECH.** *e-Handbook of Statistical Methods.*

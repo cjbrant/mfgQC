@@ -214,7 +214,7 @@ has center points, or has more runs than model terms), there is a pure-error est
 of the noise. mfgQC then reports the regression engine's standard error, $t$
 statistic, and $p$ value for each term, and flags as **significant** every term with
 $p < 0.05$. This is the analysis-of-variance reading of a designed experiment: each
-effect is judged against an honest estimate of run-to-run error.
+effect is judged against a pure-error estimate of run-to-run error.
 
 A replicated $2^3$ with two replicates (16 runs, 7 model terms, 8 residual df):
 

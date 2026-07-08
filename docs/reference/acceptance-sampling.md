@@ -17,8 +17,8 @@ good or defective and counts the defectives. A **variables** plan measures a con
 characteristic on each unit and judges the lot from the sample mean and standard
 deviation. Attributes plans make no distributional assumption about the measurement.
 Variables plans assume the characteristic is normal, inspect fewer units for the same
-protection, and break quietly when that normal assumption fails. mfgQC covers both and
-surfaces the normal assumption loudly on the variables side.
+protection, and give an invalid result, without warning, when that normal assumption
+fails. mfgQC covers both and states the normal assumption prominently on the variables side.
 
 ---
 
@@ -222,7 +222,7 @@ mfgQC states them on every plan rather than testing them:
 3. **Binary classification.** Each unit is cleanly good or defective.
 
 The one thing mfgQC does check is the model choice itself, described above. The OC-curve
-probabilities are exact for the chosen model; the honesty limit is that the model is only
+probabilities are exact for the chosen model; the limit is that the model is only
 as right as those three assumptions.
 
 ### Source

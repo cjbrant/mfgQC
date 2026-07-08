@@ -364,6 +364,13 @@ class QCData:
         from .capability import compute as _compute
         return _compute(self, method=method, alpha=alpha)
 
+    def bayes_capability(self, *, prior=None, seed: int, draws: int = 100_000,
+                         cred_level: float = 0.95):
+        """Bayesian process-capability analysis (posterior indices with credible
+        intervals). See :func:`mfgqc.bayes.capability.compute`."""
+        from .bayes.capability import compute as _compute
+        return _compute(self, prior=prior, seed=seed, draws=draws, cred_level=cred_level)
+
     def control_chart(self, kind: str | None = None, rules: str = "nelson",
                       n: "str | int | None" = None) -> "ControlChartResult":
         """Control-chart analysis. See :func:`mfgqc.control_charts.compute`.

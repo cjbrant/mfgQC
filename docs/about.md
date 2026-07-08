@@ -18,7 +18,8 @@ not preferences:
 
 mfgQC is validated in two independent layers. *Regression* tests pin it to its
 build oracles (Montgomery; AIAG MSA 4th ed.; Lawson, *Design and Analysis of
-Experiments with R*). A separate *correctness* suite pins each analysis to an
+Experiments with R*; and, for the Bayesian engines, Gelman et al., *Bayesian Data
+Analysis*, with Hoff and Colosimo & del Castillo). A separate *correctness* suite pins each analysis to an
 independent source it was **not** built against — the NIST/SEMATECH e-Handbook and
 StRD certified datasets, the R `qcc`/`SixSigma` packages, and scipy/statsmodels
 computed in-test. No expected value in that suite is ever taken from a prior mfgQC

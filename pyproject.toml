@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mfgqc"
-version = "0.2.1"
+version = "0.3.0"
 description = "Auditable SPC, capability, and gage R&R for manufacturing: statistical guardrails, hash-chained provenance, canonical QC charts."
 readme = "README.md"
 requires-python = ">=3.10"
