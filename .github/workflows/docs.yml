@@ -5,9 +5,11 @@ on:
     branches: [main]
   pull_request:
 
-# Cloudflare Pages auto-builds and deploys the connected repo on push. This
-# workflow is the GATE: it fails the pipeline if the docs don't build cleanly,
-# so a broken link or missing reference never reaches the live site.
+# This workflow is a GATE only: it fails the pipeline if the docs don't build
+# cleanly, so a broken link or missing reference is caught before publishing.
+# It does NOT deploy. The Cloudflare Pages project is Direct Upload (not
+# git-connected), so a push never updates the live site: deploy by hand with
+#   mkdocs build && wrangler pages deploy site --project-name=mfgqc --branch=main
 jobs:
   build:
     runs-on: ubuntu-latest
