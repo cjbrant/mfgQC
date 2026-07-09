@@ -85,6 +85,22 @@ class BayesNormalResult(QCResult):
             f"prior family = {self.prior_family}",
         ]
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.normal_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "mu", "mean"):
+            plotting.normal_mu_axes(ax, self)
+        elif kind in ("sigma", "sd"):
+            plotting.normal_sigma_axes(ax, self)
+        else:
+            raise ValueError(f"unknown normal view kind={kind!r}; use None, 'mu', or 'sigma'.")
+
 
 def fit_normal(y, prior, *, seed: int, draws: int, cred_level: float = 0.95,
                base_history: tuple = ()) -> BayesNormalResult:

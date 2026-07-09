@@ -110,6 +110,15 @@ class BayesProportionResult(QCResult):
                 f"P(p <= {self.max_proportion:.3g}) = {self.prob_within_spec():.3g}")
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        if kind not in (None, "proportion"):
+            raise ValueError(f"unknown proportion view kind={kind!r}; use None.")
+        from . import plotting
+        plotting.proportion_axes(ax, self)
+
 
 def proportion_capability(data=None, *, n_fail: int | None = None,
                           n_trials: int | None = None,
@@ -216,6 +225,15 @@ class BayesRateResult(QCResult):
         if self.max_rate is not None:
             lines.append(f"P(rate <= {self.max_rate:.3g}) = {self.prob_within_spec():.3g}")
         return lines
+
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        if kind not in (None, "rate"):
+            raise ValueError(f"unknown rate view kind={kind!r}; use None.")
+        from . import plotting
+        plotting.rate_axes(ax, self)
 
 
 def rate_capability(counts, exposures=None, *, max_rate: float | None = None,

@@ -190,6 +190,27 @@ class BayesCensoredCapabilityResult(QCResult):
             lines.append(f"prior = {self.prior_family}")
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.capability_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "ppk", "capability"):
+            plotting.capability_ppk_axes(ax, self)
+        elif kind in ("mu", "mean"):
+            plotting.capability_mu_axes(ax, self)
+        elif kind == "ppm":
+            plotting.capability_ppm_axes(ax, self)
+        elif kind in ("predictive", "histogram"):
+            plotting.capability_predictive_axes(ax, self)
+        else:
+            raise ValueError(f"unknown censored view kind={kind!r}; use None, 'ppk', "
+                             f"'mu', 'ppm', or 'predictive'.")
+
 
 def _censoring_fraction_check(n_censored: int, n_total: int) -> AssumptionCheck:
     frac = n_censored / n_total if n_total else 0.0

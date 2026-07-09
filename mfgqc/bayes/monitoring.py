@@ -239,6 +239,15 @@ class MonitorResult(QCResult):
         lines.append(f"family-wise alpha per subgroup (k={k}): 1-(1-alpha)^k = {fw:.3g}")
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        if kind not in (None, "pvalues"):
+            raise ValueError(f"unknown monitor view kind={kind!r}; use None.")
+        from . import plotting
+        plotting.monitor_axes(ax, self)
+
 
 def monitor(reference, subgroups, *, tests=("mean", "sd", "min", "max", "lag1_autocorr"),
             alpha: float = 0.005, R: int = 10_000, seed: int,
@@ -345,6 +354,15 @@ class PredictiveCheckResult(QCResult):
             f"Bayesian p-value P(T_rep >= T_obs) = {self.p_bayes:.3g}",
             f"two-sided p = {self.p_two_sided:.3g}   (n = {self.n}, R = {self.R})",
         ]
+
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        if kind not in (None, "pvalue"):
+            raise ValueError(f"unknown predictive-check view kind={kind!r}; use None.")
+        from . import plotting
+        plotting.predictive_check_axes(ax, self)
 
 
 def predictive_check(y, statistic="min", *, prior=None, R: int = 10_000, seed: int,

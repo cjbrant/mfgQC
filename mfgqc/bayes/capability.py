@@ -146,6 +146,27 @@ class BayesCapabilityResult(QCResult):
             lines.append(f"prior = {self.prior_family}")
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.capability_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "ppk", "capability"):
+            plotting.capability_ppk_axes(ax, self)
+        elif kind in ("mu", "mean"):
+            plotting.capability_mu_axes(ax, self)
+        elif kind == "ppm":
+            plotting.capability_ppm_axes(ax, self)
+        elif kind in ("predictive", "histogram"):
+            plotting.capability_predictive_axes(ax, self)
+        else:
+            raise ValueError(f"unknown capability view kind={kind!r}; use None, 'ppk', "
+                             f"'mu', 'ppm', or 'predictive'.")
+
 
 def capability_from_values(y, *, lower: float | None = None, upper: float | None = None,
                            target: float | None = None, prior=None, seed: int,

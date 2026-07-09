@@ -37,11 +37,19 @@ cap.prob("ppk", 1.33)    # P(Ppk >= 1.33) as (probability, MC std error)
 cap.interval("ppk", 0.90)# 90% credible interval for Ppk
 cap.summary()            # flat dict of the posterior scalars
 cap.to_dict()            # full JSON-serializable payload (consume this from code)
+cap.view()               # canonical chart (Figure); view(ax=ax) draws into your Axes
 ```
 
 `prob(quantity, threshold, direction=">=")` and `interval(quantity, level)` are the two
 methods you will use most: they read directly off the draws, so
 you never re-derive a probability from a point estimate and a standard error.
+
+Every Bayesian result renders its own chart with `.view()`, the same hook the classical
+results use: `result.view()` returns a phosphor-themed `matplotlib` Figure (posterior
+densities with the credible interval shaded, spec lines, and the decision probability
+annotated), `result.view(ax=ax)` draws the primary panel into an Axes you supply, and
+`result.view(save="cap.png")` writes the figure to disk. Multi-panel results (capability,
+comparison, guardband, pooled, short-run) accept a `kind=` to pick a single panel.
 
 !!! important "Every Monte Carlo result takes a `seed`"
     Any function that draws (capability, comparison, assurance, monitoring) requires

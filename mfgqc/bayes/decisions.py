@@ -63,6 +63,15 @@ class AssuranceResult(QCResult):
                      "validation is self-consistency (monotonicity), not an oracle.")
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        if kind not in (None, "assurance"):
+            raise ValueError(f"unknown assurance view kind={kind!r}; use None.")
+        from . import plotting
+        plotting.assurance_axes(ax, self)
+
 
 def assurance(result, *, target: tuple = ("ppk", 1.33), decide: tuple = (0.9, 0.1),
               n_grid: tuple = (20, 50, 100, 200, 400), sims: int = 1000,
@@ -168,6 +177,23 @@ class GuardbandResult(QCResult):
             lines.append("Note: expected-cost surface was not unimodal; limits are the grid "
                          "global minimum, not a golden-section optimum.")
         return lines
+
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.guardband_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "cost"):
+            plotting.guardband_cost_axes(ax, self)
+        elif kind in ("limits", "acceptance"):
+            plotting.guardband_limits_axes(ax, self)
+        else:
+            raise ValueError(f"unknown guardband view kind={kind!r}; use None, 'cost', "
+                             f"or 'limits'.")
 
 
 def _simpson_weights(n: int, dx: float) -> np.ndarray:

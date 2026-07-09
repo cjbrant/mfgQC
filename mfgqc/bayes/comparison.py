@@ -71,6 +71,27 @@ class ComparisonResult(QCResult):
             f"delta Ppk  (B - A) = {dp:.3g}   {conf}% ({dpl:.3g}, {dph:.3g})",
         ]
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.comparison_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "probabilities", "prob"):
+            plotting.comparison_prob_axes(ax, self)
+        elif kind in ("mean", "delta_mean"):
+            plotting._delta_axes(ax, self.delta_mean, title="Delta mean (B - A)",
+                                 xlabel="delta mean")
+        elif kind in ("ppk", "delta_ppk"):
+            plotting._delta_axes(ax, self.delta_ppk, title="Delta Ppk (B - A)",
+                                 xlabel="delta Ppk")
+        else:
+            raise ValueError(f"unknown comparison view kind={kind!r}; use None, "
+                             f"'probabilities', 'mean', or 'ppk'.")
+
 
 def compare(a, b, *, seed: int, draws: int = 100_000, cred_level: float = 0.95,
             labels: tuple = ("A", "B")) -> ComparisonResult:

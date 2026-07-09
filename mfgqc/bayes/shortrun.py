@@ -92,6 +92,23 @@ class ShortRunResult(QCResult):
         lines.append(_DRIFT_CAVEAT)
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.shortrun_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "statistic", "stat"):
+            plotting.shortrun_stat_axes(ax, self)
+        elif kind in ("mean", "means"):
+            plotting.shortrun_mean_axes(ax, self)
+        else:
+            raise ValueError(f"unknown shortrun view kind={kind!r}; use None, "
+                             f"'statistic', or 'mean'.")
+
 
 def shortrun(subgroups, *, target: float, d: float | None = None,
              lower: float | None = None, upper: float | None = None, prior=None,

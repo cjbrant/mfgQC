@@ -196,6 +196,23 @@ class PooledCapabilityResult(QCResult):
                      "(two-sigma decoupling). tau: uniform prior on a log grid.")
         return lines
 
+    def _render_standalone(self, fig, kind, **kwargs) -> None:
+        from . import plotting
+        if kind is None:
+            plotting.pooled_panels(fig, self)
+            return
+        self._render_axes(fig.add_subplot(111), kind, **kwargs)
+
+    def _render_axes(self, ax, kind, **kwargs) -> None:
+        from . import plotting
+        if kind in (None, "min_cpk", "capable"):
+            plotting.pooled_min_cpk_axes(ax, self)
+        elif kind in ("positions", "means"):
+            plotting.pooled_positions_axes(ax, self)
+        else:
+            raise ValueError(f"unknown pooled view kind={kind!r}; use None, 'min_cpk', "
+                             f"or 'positions'.")
+
 
 def pooled_capability(groups, *, lower: float | None = None, upper: float | None = None,
                       target: float = 1.33, prior=None, seed: int, draws: int = 100_000,
